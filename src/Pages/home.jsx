@@ -12,12 +12,12 @@ export default function Home(){
         <Layout>
             <Section />
             <ProductsComponent dataProduct={products1} title="BEST SELLERS"/>
-            {/* <Portfolio />
+            <Portfolio />  
             <ProductsComponent dataProduct={products2} title={"UPGRADE YOUR GEAR"} />
             <Promotional /> 
             <ProductsComponent dataProduct={product3} title={"TRENDING GAMES"} />
             <Subscribe />
-            <Decorative />  */}
+            <Decorative /> 
         </Layout>
     )
 }

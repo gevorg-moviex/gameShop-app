@@ -9,15 +9,15 @@ export default function Subscribe() {
                 backgroundPosition: 'bottom',
             }
         }>
-            <div className="text-white flex flex-col items-center gap-11 mt-14">
+            <div className="text-white flex flex-col items-center gap-11 mt-14 w-full">
                 <div className="text-center w-56 flex flex-col justify-center items-center">
-                    <span className="text-[42px] font-bold tracking-wide">NEWSLETTER</span>
+                    <span className="text-[32px] product340x:text-[42px] font-bold tracking-wide">NEWSLETTER</span>
                     <p>Sign up to receive updates on new products and special offers</p>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 w-full">
                     <label htmlFor="email" className="cursor-pointer">Email *</label>
-                    <div className="w-80  md:w-[500px]">
-                        <input type="email" name="" id="email" className="py-2 px-3 w-full border-2 border-solid border-white bg-transparent rounded-2xl" />
+                    <div>
+                        <input type="email" name="" id="email" className="py-2 px-3 w-full product460x:w-full border-2 border-solid border-white bg-transparent rounded-2xl" />
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 justify-between w-full items-center">

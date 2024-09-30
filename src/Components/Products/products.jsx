@@ -14,14 +14,27 @@
 
         useEffect(() => {
             const handleResize = () => {
-                setProductsPerPage(window.innerWidth < 1220 ? 3 : 4);
-                setProductsPerPage(window.innerWidth < 970 ? 2 : 3);
-                setProductsPerPage(window.innerWidth < 660 ? 1 : 2);
+                let newProductsPerPage = 4; 
+        
+                if (window.innerWidth < 660) {
+                    newProductsPerPage = 1;
+                } else if (window.innerWidth < 970) {
+                    newProductsPerPage = 2;
+                } else if (window.innerWidth < 1220) {
+                    newProductsPerPage = 3;
+                }
+        
+                setProductsPerPage(newProductsPerPage);
+        
+                if (currentIndex + newProductsPerPage > dataProduct.length) {
+                    setCurrentIndex(Math.max(0, dataProduct.length - newProductsPerPage));
+                }
             };
-    
+        
             window.addEventListener('resize', handleResize);
             return () => window.removeEventListener('resize', handleResize);
-        }, []);
+        }, [currentIndex, dataProduct.length]);
+        
 
         const nextPage = () => {
             if (currentIndex + productsPerPage < dataProduct.length) {
@@ -46,10 +59,10 @@
         };
 
         return (
-            <div className='bg-[#060506] pt-36 pb-12 flex justify-center'>
+            <div className='bg-[#060506] pt-8 md:pt-36 pb-12 flex justify-center'>
                 <div className='flex flex-col gap-10'>
-                    <div className='flex flex-col gap-7 product660x:justify-between product660x:gap-0 product660x:flex-row items-center'>
-                        <h1 className='text-white text-5xl font-bold'>{title}</h1>
+                    <div className='flex w-[300px] product660x:w-auto flex-col gap-7 product970x:justify-between product970x:gap-0 product970x:flex-row items-center'>
+                        <h1 className='text-white text-center text-5xl font-bold'>{title}</h1>
                         <button className='bg-white transition-all duration-300 text-[#8858ED] font-bold w-36 py-1.5 rounded-2xl hover:border-2 border-solid border-white hover:bg-[#8858ED] hover:text-white'>
                             View All
                         </button>
@@ -75,17 +88,17 @@
                                 );
                             })}
                         </div>
-                        <div className='absolute top-[40%] left-11 product660x:-left-11 transform -translate-y-1/2'>
+                        <div className='absolute left-2 product335x:-left-1 top-[40%] product560x:-left-3 product660x:-left-11 transform -translate-y-1/2'>
                             <button onClick={prevPage} disabled={currentIndex === 0} className='bg-transparent text-white p-2 hover:opacity-80'>
                                 <FaArrowLeft />
                             </button>
                         </div>
-                        <div className='absolute top-[40%] right-11 product660x:-right-11 transform -translate-y-1/2'>
+                        <div className='absolute right-2 product335x:-right-1 top-[40%] product560x:-right-3 product660x:-right-11 transform -translate-y-1/2'>
                             <button onClick={nextPage} disabled={currentIndex + productsPerPage >= dataProduct.length} className='bg-transparent text-white p-2 hover:opacity-80'>
                                 <FaArrowRight />
                             </button>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         );

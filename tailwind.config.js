@@ -13,7 +13,12 @@ export default {
         "section885x": "885px",
         "product1220x": "1220px",
         "product970x": "970px",
-        "product660x": "660px"
+        "product660x": "660px",
+        "product560x": "560px",
+        "product460x": "460px",
+        "product360x": "360px",
+        "product340x": "360px",
+        "product335x": "335px"
       }
     },
   },
