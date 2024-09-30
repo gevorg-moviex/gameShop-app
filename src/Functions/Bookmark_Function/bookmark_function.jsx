@@ -1,4 +1,3 @@
-import { useCallback, useState } from "react";
 import useBookmarkStore from "../../Store/useBookmarkStore";
 import useModal from "../useModal/useModal";
 import { FaMinus, FaPlus } from "react-icons/fa";

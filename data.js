@@ -135,17 +135,17 @@ export const product3 = [
 
 export const portfolio = [
     {
-        id: 1,
+        id: 19,
         title: "Consoles",
         imageUrl: "../src/assets/Portfolio/portfolio-1.webp"
     },
     {
-        id: 2,
+        id: 20,
         title: "Accesories",
         imageUrl: "../src/assets/Portfolio/portfolio-2.webp"
     },
     {
-        id: 3,
+        id: 21,
         title: "Controllers",
         imageUrl: "../src/assets/Portfolio/portfolio-3.webp"
     },
