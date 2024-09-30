@@ -1,16 +1,27 @@
-    import { useCallback, useState } from 'react';
+    import { useCallback, useEffect, useState } from 'react';
     import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
     import useBookmarkStore from '../../Store/useBookmarkStore';
 
     export default function ProductsComponent({ dataProduct, title }) {
         const [currentIndex, setCurrentIndex] = useState(0);
         const [isTransitioning, setIsTransitioning] = useState(false);
-        const productsPerPage = 4;
+        const [productsPerPage, setProductsPerPage] = useState(window.innerWidth < 1220 ? 3 : 4);
         const { addBookmark, bookmarks } = useBookmarkStore();
 
         const handleBookmark = useCallback((item) => {
             addBookmark(item);
         }, [addBookmark]);
+
+        useEffect(() => {
+            const handleResize = () => {
+                setProductsPerPage(window.innerWidth < 1220 ? 3 : 4);
+                setProductsPerPage(window.innerWidth < 970 ? 2 : 3);
+                setProductsPerPage(window.innerWidth < 660 ? 1 : 2);
+            };
+    
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }, []);
 
         const nextPage = () => {
             if (currentIndex + productsPerPage < dataProduct.length) {
@@ -37,7 +48,7 @@
         return (
             <div className='bg-[#060506] pt-36 pb-12 flex justify-center'>
                 <div className='flex flex-col gap-10'>
-                    <div className='flex justify-between items-center'>
+                    <div className='flex flex-col gap-7 product660x:justify-between product660x:gap-0 product660x:flex-row items-center'>
                         <h1 className='text-white text-5xl font-bold'>{title}</h1>
                         <button className='bg-white transition-all duration-300 text-[#8858ED] font-bold w-36 py-1.5 rounded-2xl hover:border-2 border-solid border-white hover:bg-[#8858ED] hover:text-white'>
                             View All
@@ -45,7 +56,7 @@
                     </div>
                     <div className='relative'>
                         <div
-                            className={`grid grid-cols-4 gap-6 justify-center items-center text-white transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+                            className={`grid grid-cols-1 product660x:grid-cols-2 product970x:grid-cols-3 product1220x:grid-cols-4 gap-6 justify-center items-center text-white transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
                             onTransitionEnd={handleTransitionEnd}
                         >
                             {dataProduct.slice(currentIndex, currentIndex + productsPerPage).map(item => {
@@ -64,12 +75,12 @@
                                 );
                             })}
                         </div>
-                        <div className='absolute top-[40%] -left-11 transform -translate-y-1/2'>
+                        <div className='absolute top-[40%] left-11 product660x:-left-11 transform -translate-y-1/2'>
                             <button onClick={prevPage} disabled={currentIndex === 0} className='bg-transparent text-white p-2 hover:opacity-80'>
                                 <FaArrowLeft />
                             </button>
                         </div>
-                        <div className='absolute top-[40%] -right-11 transform -translate-y-1/2'>
+                        <div className='absolute top-[40%] right-11 product660x:-right-11 transform -translate-y-1/2'>
                             <button onClick={nextPage} disabled={currentIndex + productsPerPage >= dataProduct.length} className='bg-transparent text-white p-2 hover:opacity-80'>
                                 <FaArrowRight />
                             </button>

@@ -15,7 +15,7 @@ export default function BookmarkFunction() {
 
         {isModalOpen && (
             <div className="fixed inset-0 bg-gray-600 z-[1000] bg-opacity-50 flex items-center justify-center">
-                <div className={`bg-black p-5 rounded-lg max-h-[70%] ${bookmarks.length === 0 ? "overflow-hidden" : "overflow-y-scroll"}`}>
+                <div className={`bg-black p-5 rounded-lg max-h-[70%] ${bookmarks.length === 0 ? "overflow-hidden" : "overflow-y-scroll "}`}>
                     <div className='flex w-full justify-between items-center gap-4 mb-4'>
                         <h2 className="font-bold text-xl">Bookmarked Items</h2>
                         <i 
