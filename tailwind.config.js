@@ -12,6 +12,7 @@ export default {
       screens: {
         "section885x": "885px",
         "product1220x": "1220px",
+        "product1280x": "1280px",
         "product970x": "970px",
         "product660x": "660px",
         "product560x": "560px",
