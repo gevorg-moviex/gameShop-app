@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
-export default function Sidebar() {
+export default function Sidebar( {opened} ) {
+    const [value, setValue] = useState(0);
+
     let location = useLocation()
 
-    const [value, setValue] = useState(0)
     return (
-        <div className="flex flex-col gap-3 p-5 w-56 bg-black text-white">
+        <div className={`flex mt-5 flex-col gap-9 p-5 w-56 bg-black text-white ${opened ? 'block z-50 fixed' : 'hidden'} product560x:flex`}>
             <h1 className="text-3xl">Browse by</h1>
             <hr className="border-gray-600 w-[85%]"/>
             <div>

@@ -1,11 +1,11 @@
-import { products1 } from "../../../data";
+import { allProducts } from "../../../data";
 import ProductSort from "../../Components/ProductSort/productSort";
 import LayoutProducts from "../../Layout/layoutProducts";
 
 export default function AllProduct(){
     return (
         <LayoutProducts>
-            <ProductSort database={products1} />
+            <ProductSort database={allProducts} title="All Products" />
         </LayoutProducts>
     )
 }

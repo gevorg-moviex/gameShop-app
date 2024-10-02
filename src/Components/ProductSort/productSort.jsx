@@ -1,18 +1,20 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import useBookmarkStore from "../../Store/useBookmarkStore";
 
-export default function ProductSort( {database} ) {
+export default function ProductSort( {database, title} ) {
     const { addBookmark, bookmarks } = useBookmarkStore();
+    const [show, setShow] = useState(false);
 
     const handleBookmark = useCallback((item) => {
         addBookmark(item);
     }, [addBookmark]);
 
     return (
-        <div className="flex flex-col gap-y-5">
+        <div className="flex flex-col gap-y-8 text-white mt-4">
+            <h1 className="text-5xl product360x:text-7xl">{title}</h1>
             <span className="text-white">{`${database.length} products`}</span>
-            <div className="grid grid-cols-1 gap-y-6 product1070x:grid-cols-2 product1330x:grid-cols-3">
-                {database.map(item => {
+            <div className="grid grid-cols-1 product970x:grid-cols-2 gap-6 product1070x:grid-cols-3 product1330x:grid-cols-3">
+                {database.slice(0, show ? database.length : 9).map(item => {
                     const bookmark = bookmarks.find(b => b.id === item.id);
                     const count = bookmark ? bookmark.count : 0;
                     return (
@@ -27,6 +29,11 @@ export default function ProductSort( {database} ) {
                     )
                 })}
             </div>
+            {database.length > 9 && (
+                <div className="flex justify-center">
+                    <button className="px-7 py-2 text-white bg-[#8858ED] rounded-3xl border-none outline-none transition-all duration-300 hover:opacity-[0.4]" onClick={() => setShow(!show)}>{show ? "Hide" : "Load More"}</button>
+                </div>
+            )}
         </div>
     )
 };

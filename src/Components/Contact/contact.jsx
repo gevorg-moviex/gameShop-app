@@ -2,7 +2,7 @@ export default function ContactComponent(){
     return (
         <div className="flex w-full justify-center bg-[#060506] text-white lg:h-[90vh]  flex-col">
             <div className="flex justify-around  w-full flex-col gap-10 py-14 items-center lg:flex-row lg:py-0 lg:gap-0">
-                <div className="flex flex-col gap-10 items-center lg:items-start">
+                <div className="flex flex-col gap-10 items-center lg:items-start product1000x:pl-5 product1280x:pl-0">
                     <div className="text-[50px] px-3 text-center product360x:px-0 sm:text-[70px] product360x:text-left font-bold">NEED A HAND?</div>
                     <div>
                         <span className="text-2xl">Contact Us</span>

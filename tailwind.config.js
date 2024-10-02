@@ -17,6 +17,7 @@ export default {
         "product1220x": "1220px",
         "product1070x": "1070px",
         "product1280x": "1280px",
+        "product1000x": "1000px",
         "product970x": "970px",
         "product805x": "805px",
         "product660x": "660px",
