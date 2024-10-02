@@ -1,4 +1,4 @@
-import subBg from "/Subscribe/subscribe-1.webp"
+import subBg from "../../assets/Subscribe/subscribe-1.webp"
 
 export default function Subscribe() {
     return (

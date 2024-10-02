@@ -1,5 +1,6 @@
 import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
@@ -14,13 +15,13 @@ export default function Footer() {
                     <span className="font-bold text-center md:text-left">Products</span>
                     <ul className="flex flex-col justify-center gap-4 items-center md:items-start">
                         <li>
-                            <a href="#" className="hover:text-gray-400">Consoles</a>
+                            <Link to="/products/consoles" className="hover:text-gray-400">Consoles</Link>
                         </li>
                         <li>
-                            <a href="#" className="hover:text-gray-400">Controllers</a>
+                            <Link to="/products/controllers" className="hover:text-gray-400">Controllers</Link>
                         </li>
                         <li>
-                            <a href="#" className="hover:text-gray-400">Accessories</a>
+                            <Link to="/products/accesories" className="hover:text-gray-400">Accessories</Link>
                         </li>
                     </ul>
                 </div>

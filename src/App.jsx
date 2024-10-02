@@ -8,6 +8,8 @@ import LayoutProducts from './Layout/layoutProducts';
 // import Sidebar from './Components/Sidebar/sidebar';
 import { products1 } from '../data';
 import ProductSort from './Components/ProductSort/productSort';
+import AllProduct from './Pages/products/all_products';
+import Accesories from './Pages/products/accesories';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,11 +18,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='/products/allProducts' element={<AllProduct />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path='/products/accesories' element={<Accesories />} />
       </Routes>
-      {/* <LayoutProducts>
-          <ProductSort database={products1} />
-      </LayoutProducts>   */}
     </>
   )
 }
