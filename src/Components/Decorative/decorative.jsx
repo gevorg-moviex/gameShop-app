@@ -1,4 +1,4 @@
-import  decorativeImg  from "../../assets/Decorative/decorative-1.webp"
+import  decorativeImg  from "/Decorative/decorative-1.webp"
 
 export default function Decorative() {
     return (
