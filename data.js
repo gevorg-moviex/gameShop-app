@@ -1,7 +1,7 @@
 export const products1 = [
     {
         id: 1,
-        imageUrl: "https://static.wixstatic.com/media/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg/v1/fill/w_375,h_375,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg",
+        imageUrl: "/gameShop-app/src/assets/Products_1/product1-1.webp",
         title: "Echo Headset",
         price: "$ 39.99",
         count: 1

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-// import Home from './Pages/home'
-// import Contact from './Pages/contact';
-// import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Pages/home'
+import Contact from './Pages/contact';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/sidebar';
 import LayoutProducts from './Layout/layoutProducts';
 // import Sidebar from './Components/Sidebar/sidebar';
@@ -14,13 +14,13 @@ function App() {
 
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-      </Routes> */}
-      <LayoutProducts>
+      </Routes>
+      {/* <LayoutProducts>
           <ProductSort database={products1} />
-      </LayoutProducts>  
+      </LayoutProducts>   */}
     </>
   )
 }
