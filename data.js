@@ -1,7 +1,7 @@
 export const products1 = [
     {
         id: 1,
-        imageUrl: "/gameShop-app/src/assets/Products_1/product1-1.webp",
+        imageUrl: "/gameShop-app/src/assets/product1-1.webp",
         title: "Echo Headset",
         price: "$ 39.99",
         count: 1
