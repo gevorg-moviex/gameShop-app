@@ -1,14 +1,18 @@
 import { useState } from "react"
+import { FaX } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom"
 
-export default function Sidebar( {opened} ) {
+export default function Sidebar( {opened, setOpened} ) {
     const [value, setValue] = useState(0);
 
     let location = useLocation()
 
     return (
-        <div className={`flex mt-5 flex-col gap-9 p-5 w-56 bg-black text-white ${opened ? 'block z-50 fixed' : 'hidden'} product560x:flex`}>
-            <h1 className="text-3xl">Browse by</h1>
+        <div className={`flex rounded-xl flex-col mt-5 gap-9 p-5 w-56 bg-black text-white ${opened ? 'block z-[1000] mt-0 border-gray-300 border fixed' : 'hidden'} product560x:flex`}>
+            <div className="flex items-center gap-5">
+                <h1 className="text-3xl">Browse by</h1>
+                {opened && <FaX className="text-lg cursor-pointer relative -top-3 left-4" onClick={() => setOpened(false)} />}
+            </div>
             <hr className="border-gray-600 w-[85%]"/>
             <div>
                 <ul className="flex flex-col gap-2">

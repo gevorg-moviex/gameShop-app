@@ -32,7 +32,7 @@ export default function Navbar() {
                     <Link to="/contact" className="block p-2 transition-all duration-300 hover:text-[#887CED]">Contact Us</Link>
                 </li>
                 <li>
-                    <Link to="/login" className="block p-2 transition-all duration-300 hover:text-[#887CED]">Log in</Link>
+                    <Link to="/login" className="block p-1 px-3 border border-solid border-[#8858ED] rounded-3xl transition-all font-bold duration-300 text-[#887CED] hover:text-white hover:border-white">Log in</Link>
                 </li>
                 <li className={`${isOpen ? "hidden" : "block"}`}>
                     <BookmarkFunction />

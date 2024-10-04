@@ -1,6 +1,7 @@
     import { useCallback, useEffect, useState } from 'react';
     import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
     import useBookmarkStore from '../../Store/useBookmarkStore';
+import { Link } from 'react-router-dom';
 
     export default function ProductsComponent({ dataProduct, title }) {
         const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,9 +64,11 @@
                 <div className='flex flex-col gap-10'>
                     <div className='flex w-[300px] product660x:w-auto flex-col gap-7 product970x:justify-between product970x:gap-0 product970x:flex-row items-center'>
                         <h1 className='text-white text-center text-5xl font-bold'>{title}</h1>
-                        <button className='bg-white transition-all duration-300 text-[#8858ED] font-bold w-36 py-1.5 rounded-2xl hover:border-2 border-solid border-white hover:bg-[#8858ED] hover:text-white'>
-                            View All
-                        </button>
+                        <Link to={"/products/allProducts"}>
+                            <button className='bg-white transition-all duration-300 text-[#8858ED] font-bold w-36 py-1.5 rounded-2xl hover:border-2 border-solid border-white hover:bg-[#8858ED] hover:text-white'>
+                                View All
+                            </button>
+                        </Link>
                     </div>
                     <div className='relative'>
                         <div
@@ -78,7 +81,7 @@
 
                                 return (
                                     <div key={item.id} className="flex flex-col justify-around gap-3 items-center py-6">
-                                        <img src={item.imageUrl} alt="" className='max-w-64 max-h-64 cursor-pointer object-cover transition-transform duration-300 ease-in-out transform hover:scale-110' />
+                                        <img src={item.imageUrl} alt="" className='max-w-64 max-h-64 cursor-pointer object-cover transition-transform duration-300 ease-in-out transform hover:scale-[1.09]' />
                                         <h2 className='text-lg font-bold'>{item.title}</h2>
                                         <p>{item.price}</p>
                                         <button className='w-[70%] transition-all duration-300 border-none outline-none bg-[#8858ED] text-white rounded-2xl py-1.5 hover:bg-white hover:text-[#8858ED]' onClick={() => handleBookmark(item)}>

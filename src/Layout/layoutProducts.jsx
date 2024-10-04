@@ -13,14 +13,14 @@ export default function LayoutProducts( {children} ) {
         <>
             <Header />
                 <div className="flex px-5 product660x:px-16 product805x:px-32 bg-black">
-                    <Sidebar toggle={toggleSidebar} opened={isOpen} />
+                    <Sidebar toggle={toggleSidebar} opened={isOpen} setOpened={setIsOpen} />
                     <div className="flex-1 p-4">
                         <div>
                             <button 
-                                className="product560x:hidden p-2 text-white bg-red-500" 
+                                className="text-lg product560x:hidden p-2 text-white" 
                                 onClick={toggleSidebar}
                             >
-                                {isOpen ? "✖" : "☰"}
+                                {isOpen ? "" : "☰"}
                             </button>
                             {children}
                         </div>
