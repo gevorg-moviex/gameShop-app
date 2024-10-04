@@ -137,17 +137,20 @@ export const portfolio = [
     {
         id: 19,
         title: "Consoles",
-        imageUrl: "../src/assets/Portfolio/portfolio-1.webp"
+        imageUrl: "../src/assets/Portfolio/portfolio-1.webp",
+        srcProduct: "/products/consoles"
     },
     {
         id: 20,
         title: "Accesories",
-        imageUrl: "../src/assets/Portfolio/portfolio-2.webp"
+        imageUrl: "../src/assets/Portfolio/portfolio-2.webp",
+        srcProduct: "/products/accesories"
     },
     {
         id: 21,
         title: "Controllers",
-        imageUrl: "../src/assets/Portfolio/portfolio-3.webp"
+        imageUrl: "../src/assets/Portfolio/portfolio-3.webp",
+        srcProduct: "/products/controllers"
     },
 ]
 

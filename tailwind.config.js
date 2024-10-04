@@ -26,7 +26,12 @@ export default {
         "product360x": "360px",
         "product340x": "360px",
         "product335x": "335px"
-      }
+      },
+      boxShadow: {
+        'customShadow': '0 3px 8px rgba(0, 0, 0, 0.24)',
+        "custom-2-shadow": "0 0 5px 5px #03BFA9",
+        "inputsShadow": "#03BFA9 0px 5px 15px;"
+      },
     },
   },
   plugins: [],

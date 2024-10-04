@@ -8,12 +8,15 @@ import Accesories from './Pages/products/accesories';
 import BestSellers from './Pages/products/best_sellers';
 import Consoles from './Pages/products/consoles';
 import Controllers from './Pages/products/controllers';
+import Login from './Pages/login';
+import Register from './Pages/register';
 
 function App() {
   
   return (
     <>
       <Routes>
+        <Route path='/register' index element={<Register />} /> 
         <Route path="/" element={<Home />} />
         <Route path='/products/allProducts' element={<AllProduct />} />
         <Route path="/contact" element={<Contact />} />
@@ -21,6 +24,7 @@ function App() {
         <Route path='/products/bestSellers' element={<BestSellers />} />
         <Route path='/products/consoles' element={<Consoles />} />
         <Route path='/products/controllers' element={<Controllers />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </>
   )
