@@ -10,6 +10,7 @@ import Consoles from './Pages/products/consoles';
 import Controllers from './Pages/products/controllers';
 import Login from './Pages/login';
 import Register from './Pages/register';
+import Item from './Pages/item';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
         <Route path='/products/consoles' element={<Consoles />} />
         <Route path='/products/controllers' element={<Controllers />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/item' element={<Item />} />
       </Routes>
     </>
   )
