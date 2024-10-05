@@ -1,19 +1,24 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { descriptionItem, allProducts } from "../../../data";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function ItemComponent() {
+    const [description, setDescription] = useState(descriptionItem);
+
     const itemId = new URLSearchParams(location.search).get("id");
     const gettedItem = allProducts.filter(item => item.id == itemId)
 
     const handleDescription = (id) => {
-        descriptionItem.map(item => 
-            item.id == id ? {...item, isOpened: !item.isOpened} : item
+        setDescription(prevItem => 
+            prevItem.map(item => 
+                item.id === id ? {...item, isOpened: !item.isOpened} : item
+            )
         )
     }
         
     return (
-        <div className="bg-black py-10 flex justify-center items-center text-white">
+        <div className="bg-black py-12 flex justify-center items-center text-white">
             <div key={gettedItem[0].id} className="flex justify-center gap-7">
                 <div className="flex flex-col gap-14 w-[500px] object-contain">
                     <img src={gettedItem[0].imageUrl} alt="" className="w-full h-[420px]" 
@@ -23,7 +28,7 @@ export default function ItemComponent() {
                         }} />
                     <p>I'm a product description. This is a great place to "sell" your product and grab buyers' attention. Describe your product clearly and concisely. Use unique keywords. Write your own description instead of using manufacturers' copy.</p>
                 </div>
-                <div className="flex flex-col w-[300px] gap-11">
+                <div className="flex flex-col w-[300px] gap-14">
                     <h1 className="font-bold text-[42px]">{gettedItem[0].title}</h1>
                     <span className="text-xl">{gettedItem[0].price}</span>
                     <div className="flex flex-col">
@@ -37,19 +42,16 @@ export default function ItemComponent() {
                         </Link>
                     </div>
                     <div className="flex flex-col gap-5">
-                        {descriptionItem.map((item) => (
-                            <div key={item.id} className="flex flex-col border-b border-gray-300 pb-5">
-                                <div className="flex justify-between items-center">
-                                    <span>{item.title}</span>
-                                    <div className="cursor-pointer text-sm" onClick={() => handleDescription(item.id)}>{item.isOpened ? <FaPlus /> : <FaMinus />}</div>
+                        {description.map((item) => (
+                            <div key={item.id} className="flex flex-col border-b border-gray-300 pb-5 gap-1">
+                                <div className="flex justify-between items-center cursor-pointer group" onClick={() => handleDescription(item.id)}>
+                                    <span className="group-hover:opacity-[0.8]">{item.title}</span>
+                                    <div className="cursor-pointer group-hover:opacity-[0.7] text-sm">{item.isOpened ? <FaMinus /> : <FaPlus />}</div>
                                 </div>
-                                <p className={`${item.isOpened ? "hidden" : "block"} text-sm tracking-wide`}>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.</p>
+                                <p className={`transition-all text-sm duration-500 ease-in-out overflow-hidden ${item.isOpened ? 'max-h-80' : 'max-h-0'}`}>{item.description}</p>
                             </div>
-                            
                         ))}
-                        {console.log(descriptionItem)}
-                    </div>
-                    
+                    </div>                    
                 </div>
             </div>
         </div>
