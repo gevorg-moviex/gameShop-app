@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function ItemComponent() {
     const [description, setDescription] = useState(descriptionItem);
+    const [openId, setOpenId] = useState(1)
 
     const itemId = new URLSearchParams(location.search).get("id");
     const gettedItem = allProducts.filter(item => item.id == itemId)
@@ -15,6 +16,7 @@ export default function ItemComponent() {
                 item.id === id ? {...item, isOpened: !item.isOpened} : item
             )
         )
+        setOpenId(prevId => (prevId == id ? null : id))
     }
         
     return (
@@ -46,9 +48,9 @@ export default function ItemComponent() {
                             <div key={item.id} className="flex flex-col border-b border-gray-300 pb-5 gap-1">
                                 <div className="flex justify-between items-center cursor-pointer group" onClick={() => handleDescription(item.id)}>
                                     <span className="group-hover:opacity-[0.8]">{item.title}</span>
-                                    <div className="cursor-pointer group-hover:opacity-[0.7] text-sm">{item.isOpened ? <FaMinus /> : <FaPlus />}</div>
+                                    <div className="cursor-pointer group-hover:opacity-[0.7] text-sm">{openId == item.id ? <FaMinus /> : <FaPlus />}</div>
                                 </div>
-                                <p className={`transition-all text-sm duration-500 ease-in-out overflow-hidden ${item.isOpened ? 'max-h-80' : 'max-h-0'}`}>{item.description}</p>
+                                <p className={`transition-all text-sm duration-700 ease-in-out overflow-hidden ${openId == item.id ? 'max-h-80' : 'max-h-0'}`}>{item.description}</p>
                             </div>
                         ))}
                     </div>                    
