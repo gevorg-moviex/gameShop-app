@@ -33,7 +33,7 @@ export default function Sidebar( {opened, setOpened} ) {
                     </li>
                 </ul>
             </div>
-            <hr className="border-gray-600 w-[85px]"/>
+            <hr className="border-gray-600 w-[85%]"/>
             <h1 className="text-2xl">Filter by</h1>
             <div className="flex flex-col gap-3">
                 <span>Price</span>

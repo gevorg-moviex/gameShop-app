@@ -1,6 +1,44 @@
+import { useRef, useState } from "react"
+
 export default function ContactComponent(){
+    const firstName = useRef(null);
+    const lastName = useRef(null);
+    const emailRef = useRef(null);
+    const phoneRef = useRef(null);
+    const messageRef = useRef(null);
+    const [error, setError] = useState(false);
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (firstName.current.value == "" || lastName.current.value == "" || emailRef.current.value == "" || phoneRef.current.value == "" || messageRef.current.value == ""){
+            setError(true)
+        }
+        else {
+            const obj = {
+                userFirstName: firstName.current.value,
+                userLastName: lastName.current.value,
+                email: emailRef.current.value,
+                phone: phoneRef.current.value,
+                message: messageRef.current.value
+            }    
+        
+            alert("Your info was sent Thanks")
+
+            localStorage.setItem("contactInfo", JSON.stringify(obj))
+            firstName.current.value = "";
+            lastName.current.value = "";
+            emailRef.current.value = "";
+            phoneRef.current.value = "";
+            messageRef.current.value = "";
+
+            setError(false)
+        }
+    }
+    
     return (
-        <div className="flex w-full justify-center bg-[#060506] text-white lg:h-[90vh]  flex-col">
+        <div className="flex w-full justify-center bg-black text-white lg:h-[90vh]  flex-col">
             <div className="flex justify-around  w-full flex-col gap-10 py-14 items-center lg:flex-row lg:py-0 lg:gap-0">
                 <div className="flex flex-col gap-10 items-center lg:items-start product1000x:pl-5 product1280x:pl-0">
                     <div className="text-[50px] px-3 text-center product360x:px-0 sm:text-[70px] product360x:text-left font-bold">NEED A HAND?</div>
@@ -22,35 +60,41 @@ export default function ContactComponent(){
                         </iframe>
                     </div>
                 </div>
-                <div className="flex px-4 flex-col gap-10 justify-center w-full sm:w-auto sm:px-16">
-                    <div className="flex flex-col sm:flex-row gap-5">
-                        <div className="flex flex-col">
-                            <label htmlFor="firstname">First Name*</label>
-                            <input type="text" id="firstname" className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
+                <form action="" onSubmit={handleSubmit} className="w-full sm:w-auto px-2 product460x:px-5">
+                    <div className="flex px-4 flex-col gap-10 justify-center w-full sm:w-auto sm:px-16">
+                        <div className="flex flex-col sm:flex-row gap-5">
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="firstname">First Name*</label>
+                                <input type="text" id="firstname" ref={firstName} className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="lastname">Last Name*</label>
+                                <input type="text" id="lastname" ref={lastName} className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="lastname">Last Name*</label>
-                            <input type="text" id="lastname" className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
+                        <div className="flex flex-col w-full sm:flex-row gap-5">
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="email">Email*</label>
+                                <input type="text" id="email" ref={emailRef} className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="lastname">Phone*</label>
+                                <input type="number" id="lastname" ref={phoneRef} className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="message">Leave us a message</label>
+                            <textarea type="text" name="" id="message" ref={messageRef} maxLength="30" className="h-28 px-3 bg-transparent border-2 border-[#8858ED] resize-none rounded-2xl outline-none"></textarea>
+                            {error && <div className="text-center mt-2">
+                                    <span className="text-red-700 text-lg">All inputs field is not filled!</span>
+                                </div>
+                            }
+                        </div>
+                        <div onSubmit={handleSubmit} onClick={handleSubmit} className="w-full bg-[#8858ED] transition-all duration-500 border-black border-2 text-center py-2 cursor-pointer rounded-2xl hover:border-white">
+                            <button className="font-bold" type="submit">Submit</button>
                         </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-5">
-                        <div className="flex flex-col">
-                            <label htmlFor="email">Email*</label>
-                            <input type="text" id="email" className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="lastname">Phone*</label>
-                            <input type="number" id="lastname" className="py-2 px-3 bg-transparent border-2 border-[#8858ED] rounded-2xl outline-none" />
-                        </div>
-                    </div>
-                    <div className="flex flex-col">
-                        <label htmlFor="message">Leave us a message</label>
-                        <textarea type="text" name="" id="message" className="h-28 px-3 bg-transparent border-2 border-[#8858ED] resize-none rounded-2xl outline-none"></textarea>
-                    </div>
-                    <div className="w-full bg-[#8858ED] transition-all duration-500 border-black border-2 text-center py-2 cursor-pointer rounded-2xl hover:border-white">
-                        <button className="font-bold">Submit</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     )

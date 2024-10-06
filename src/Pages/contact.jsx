@@ -3,7 +3,7 @@ import Layout from "../Layout/layout";
 
 export default function Contact(){
     return (
-        <Layout>
+        <Layout themeColor="dark">
             <ContactComponent />
         </Layout>
     )

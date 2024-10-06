@@ -3,7 +3,7 @@ import Layout from "../Layout/layout";
 
 export default function Item(){
     return (
-        <Layout>
+        <Layout themeColor="dark">
             <ItemComponent />
         </Layout>
     )
