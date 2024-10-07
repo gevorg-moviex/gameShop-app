@@ -41,7 +41,10 @@ export default function ItemComponent() {
                 </div>
                 <div className="flex flex-col w-auto product460x:w-[400px] product560x:w-[500px] product805x:w-[300px] gap-14">
                     <h1 className="font-bold text-[42px]">{gettedItem[0].title}</h1>
-                    <span className="text-xl">{"$" + quantity * parseInt(gettedItem[0].price.slice(1))}</span>
+                    <div className="flex flex-col">
+                    <span className="text-xl font-bold">Total</span>
+                    <span>{"$" + quantity * parseInt(gettedItem[0].price.slice(1))}</span>
+                    </div>
                     <div className="flex flex-col">
                         <span className="font-bold text-lg">Quantity</span>
                         <div className="flex gap-2 items-center">
