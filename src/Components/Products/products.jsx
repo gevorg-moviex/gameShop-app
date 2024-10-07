@@ -77,7 +77,7 @@ export default function ProductsComponent({ dataProduct, title }) {
                     >
                         {dataProduct.slice(currentIndex, currentIndex + productsPerPage).map(item => {
                             const bookmark = bookmarks.find(b => b.id === item.id);
-                            const count = bookmark ? bookmark.count : 1;
+                            const count = bookmark ? bookmark.count : 0;
 
                             return (
                                 <div key={item.id} className="flex flex-col justify-around gap-3 items-center py-6">
@@ -85,9 +85,9 @@ export default function ProductsComponent({ dataProduct, title }) {
                                         <img src={item.imageUrl} alt="" className='max-w-64 max-h-64 cursor-pointer object-cover transition-transform duration-300 ease-in-out transform hover:scale-[1.09]' />
                                     </Link>
                                     <h2 className='text-lg font-bold'>{item.title}</h2>
-                                    <p>{"$" + count * parseInt(item.price.slice(1))}</p>
+                                    <p>{item.price}</p>
                                     <button className='w-[70%] transition-all duration-300 border-none outline-none bg-[#8858ED] text-white rounded-2xl py-1.5 hover:bg-white hover:text-[#8858ED]' onClick={() => handleBookmark(item)}>
-                                        Add to Cart {count > 1 ? `(${count})` : ''}
+                                        Add to Cart {count > 0 ? `(${count})` : ''}
                                     </button>
                                 </div>
                             );
