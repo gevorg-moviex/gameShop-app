@@ -1,7 +1,7 @@
-import './App.css'
-import Home from './Pages/home'
+import './App.css';
+import Home from './Pages/home';
 import Contact from './Pages/contact';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AllProduct from './Pages/products/all_products';
 import Accesories from './Pages/products/accesories';
 import BestSellers from './Pages/products/best_sellers';
@@ -10,26 +10,28 @@ import Controllers from './Pages/products/controllers';
 import Login from './Pages/login';
 import Register from './Pages/register';
 import Item from './Pages/item';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-  function App() {
-      
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+
   return (
-    <>
       <Routes>
-        <Route path='/register' index element={<Register />} /> 
-        <Route path="/" element={<Home />} />
-        <Route path='/products/allProducts' element={<AllProduct />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path='/products/accesories' element={<Accesories />} />
-        <Route path='/products/bestSellers' element={<BestSellers />} />
-        <Route path='/products/consoles' element={<Consoles />} />
-        <Route path='/products/controllers' element={<Controllers />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/item' element={<Item />} />
+        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/products/allProducts" element={isLoggedIn ? <AllProduct /> : <Navigate to="/login" />} />
+        <Route path="/contact" element={isLoggedIn ? <Contact /> : <Navigate to="/login" />} />
+        <Route path="/products/accesories" element={isLoggedIn ? <Accesories /> : <Navigate to="/login" />} />
+        <Route path="/products/bestSellers" element={isLoggedIn ? <BestSellers /> : <Navigate to="/login" />} />
+        <Route path="/products/consoles" element={isLoggedIn ? <Consoles /> : <Navigate to="/login" />} />
+        <Route path="/products/controllers" element={isLoggedIn ? <Controllers /> : <Navigate to="/login" />} />
+        <Route path="/item" element={isLoggedIn ? <Item /> : <Navigate to="/login" />} />
+
+        <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} />} />
       </Routes>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;

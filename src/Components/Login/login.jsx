@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export default function LoginComponent() {
+export default function LoginComponent( {isLoggedIn, setIsLoggedIn} ) {
     const navigate = useNavigate();
     const location = useLocation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [users, setUsers] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +28,7 @@ export default function LoginComponent() {
 
     useEffect(() => {
         if (isLoggedIn) {
-            navigate("/"); // Redirect to home
+            navigate("/"); 
         }
     }, [isLoggedIn, navigate]);
 
@@ -39,7 +38,7 @@ export default function LoginComponent() {
         const getUser = users.find((item) => item.email === email && item.password === password);
 
         if (getUser) {
-            setIsLoggedIn(true); // Set logged in state
+            setIsLoggedIn(true); 
             setErrorMessage(null);
         } else {
             setErrorMessage("Incorrect email or password!");
