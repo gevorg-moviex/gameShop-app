@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function RegisterComponent() {
@@ -27,7 +27,7 @@ export default function RegisterComponent() {
             };
     
             try {
-                const response = await fetch("http://localhost:8081/register", {
+                const response = await fetch("http://localhost:8082/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -36,13 +36,13 @@ export default function RegisterComponent() {
                 });
     
                 if (!response.ok) {
-                    throw new Error("Registration failed");
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || "Registration failed");
                 }
     
                 const result = await response.json();
-                console.log(result.message); // Log success message
+                console.log(result.message); 
                 
-                // Redirect to the login page after successful registration
                 navigate("/login");
             } catch (error) {
                 console.error("Error:", error);
@@ -51,14 +51,6 @@ export default function RegisterComponent() {
             console.log("Please fill all fields.");
         }
     };
-    
-    
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     saveInfo(); 
-    //     const info = JSON.parse(localStorage.getItem("info") || [])
-    //     navigate('/');
-    // };
 
     return (
         <div className="p-4 flex justify-center items-center h-[100vh] bg-[#020202] border-b border-gray-900">
