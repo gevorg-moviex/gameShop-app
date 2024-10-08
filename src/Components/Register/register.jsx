@@ -15,31 +15,50 @@ export default function RegisterComponent() {
     };
 
     const navigate = useNavigate();
-    function saveInfo() {
-        const infoArray = JSON.parse(localStorage.getItem("info")) || [];
+    const handleSubmit = async (e) => {
+        e.preventDefault();
     
         if (name && surname && email && password) {
-            const newUser = {
+            const user = {
                 userName: name,
                 userSurname: surname,
                 userEmail: email,
                 userPassword: password,
             };
     
-            infoArray.push(newUser);
+            try {
+                const response = await fetch("http://localhost:8081/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(user),
+                });
     
-            localStorage.setItem("info", JSON.stringify(infoArray));
+                if (!response.ok) {
+                    throw new Error("Registration failed");
+                }
+    
+                const result = await response.json();
+                console.log(result.message); // Log success message
+                
+                // Redirect to the login page after successful registration
+                navigate("/login");
+            } catch (error) {
+                console.error("Error:", error);
+            }
         } else {
             console.log("Please fill all fields.");
         }
-    }
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        saveInfo(); 
-        const info = JSON.parse(localStorage.getItem("info") || [])
-        navigate('/');
     };
+    
+    
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     saveInfo(); 
+    //     const info = JSON.parse(localStorage.getItem("info") || [])
+    //     navigate('/');
+    // };
 
     return (
         <div className="p-4 flex justify-center items-center h-[100vh] bg-[#020202] border-b border-gray-900">
