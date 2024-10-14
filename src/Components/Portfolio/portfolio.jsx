@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
 import { portfolio } from "../../../data"
-import {prz} from "../../assets/Portfolio/portfolio-1.webp"
 
 export default function Portfolio() {
     return (
@@ -10,7 +9,7 @@ export default function Portfolio() {
             {portfolio.map((item) => (
                 <Link key={item.id} to={item.srcProduct}>
                     <div className="transition-all duration-500 rounded-3xl cursor-pointer hover:-translate-y-6 group">
-                        <img src={product1_1} alt="" className="w-[250px] product660x:w-[300px] product805x:w-[450px] transition-all duration-300 h-auto object-cover rounded-3xl group-hover:brightness-[130%]"/>
+                        <img src={item.imageUrl} alt="" className="w-[250px] product660x:w-[300px] product805x:w-[450px] transition-all duration-300 h-auto object-cover rounded-3xl group-hover:brightness-[130%]"/>
                         <span className="block mt-2 text-center font-bold text-white text-xl">{item.title}</span>
                     </div>
                 </Link>
