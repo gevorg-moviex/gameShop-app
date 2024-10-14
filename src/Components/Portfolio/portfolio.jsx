@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
 import { portfolio } from "../../../data"
-import product1_1 from './assets/Products_1/product1-1.webp';
+import {prz} from "../../assets/Portfolio/portfolio-1.webp"
 
 export default function Portfolio() {
     return (
