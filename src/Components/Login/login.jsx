@@ -7,24 +7,6 @@ export default function LoginComponent( {isLoggedIn, setIsLoggedIn} ) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:8082/users");
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
-        fetchData();
-    }, []);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -35,7 +17,9 @@ export default function LoginComponent( {isLoggedIn, setIsLoggedIn} ) {
     function handleGetInfo(e) {
         e.preventDefault();
 
-        const getUser = users.find((item) => item.email === email && item.password === password);
+        const users = JSON.parse(localStorage.getItem("info")) || []        
+
+        const getUser = users.find((item) => item.userEmail === email && item.userPassword === password);
 
         if (getUser) {
             setIsLoggedIn(true); 
@@ -54,7 +38,7 @@ export default function LoginComponent( {isLoggedIn, setIsLoggedIn} ) {
                         <label htmlFor="email">Email</label>
                         <input 
                             autoComplete="current-password" 
-                            type="text" 
+                            type="email" 
                             id="email" 
                             placeholder="Enter your email..." 
                             onChange={e => setEmail(e.target.value)} 

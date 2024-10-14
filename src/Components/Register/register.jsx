@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link} from "react-router-dom";
 
 export default function RegisterComponent() {
     const [name, setName] = useState("");
@@ -7,14 +7,8 @@ export default function RegisterComponent() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const obj = {
-        userName: name,
-        userSurname: surname,
-        userEmail: email,
-        userPassword: password,
-    };
-
     const navigate = useNavigate();
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -25,28 +19,12 @@ export default function RegisterComponent() {
                 userEmail: email,
                 userPassword: password,
             };
-    
-            try {
-                const response = await fetch("http://localhost:8082/register", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(user),
-                });
-    
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || "Registration failed");
-                }
-    
-                const result = await response.json();
-                console.log(result.message); 
-                
-                navigate("/login");
-            } catch (error) {
-                console.error("Error:", error);
-            }
+
+            navigate("/login")
+
+            const infosArr = JSON.parse(localStorage.getItem("info")) || [];
+            infosArr.push(user)
+            localStorage.setItem("info", JSON.stringify(infosArr))
         } else {
             console.log("Please fill all fields.");
         }
@@ -67,8 +45,8 @@ export default function RegisterComponent() {
                     </div>
                     <div className="flex flex-col gap-3 w-4/5">
                         <label htmlFor="email">Email</label>
-                        <input autoComplete="current-password" type="text" id="email" placeholder="Enter your email..." onChange={e => setEmail(e.target.value)} className="bg-transparent rounded-full outline-none shadow-inputsShadow h-8 px-4 py-[20px]" />
-                    </div>
+                        <input autoComplete="current-password" type="email" id="email" placeholder="Enter your email..." onChange={e => setEmail(e.target.value)} className="bg-transparent rounded-full outline-none shadow-inputsShadow h-8 px-4 py-[20px]" />
+                    </div>  
                     <div className="flex flex-col gap-3 w-4/5">
                         <label htmlFor="password">Password</label>
                         <input autoComplete="current-password" type="password" id="password" placeholder="Enter your password..." onChange={e => setPassword(e.target.value)} className="bg-transparent rounded-full outline-none shadow-inputsShadow h-8 px-4 py-[20px]" />
