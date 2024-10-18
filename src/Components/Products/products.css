@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+    width: 20px; 
+    height: 2px; 
+    background-color: #8858ED; 
+    margin: 0 4px; 
+    opacity: 0.5; 
+    transition: opacity 0.3s;
+}
+
+.swiper-pagination-bullet {
+    bottom: 300px;  
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}

@@ -32,7 +32,7 @@ export default function LoginComponent( {isLoggedIn, setIsLoggedIn} ) {
     return (
         <div className="p-4 flex justify-center h-[100vh] items-center bg-[#020202] border-b border-gray-500">
             <form onSubmit={handleGetInfo}>
-                <div className="flex flex-col justify-center py-10 items-center rounded-xl gap-5 border border-black border-solid p-3 w-80 shadow-custom-2-shadow bg-[#213243] text-white ">
+                <div className="flex flex-col justify-center py-10 product970px:py-48 items-center rounded-xl gap-5 border border-black border-solid p-3 w-80 product970x:w-[500px] shadow-custom-2-shadow bg-[#213243] text-white ">
                     <h1 className="text-2xl font-bold">Login</h1>
                     <div className="flex flex-col gap-3 w-4/5">
                         <label htmlFor="email">Email</label>
