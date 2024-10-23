@@ -31,7 +31,7 @@ function App() {
         <Route path="/item" element={isLoggedIn ? <Item /> : <Navigate to="/login" />} />
 
         <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} />} />
-      </Routes>
+      </Routes>   
   );
 }
 
