@@ -1,11 +1,12 @@
 import { allProducts } from "../../../data";
+import { allProductsaAm } from "../../../dataAm";
 import ProductSort from "../../Components/ProductSort/productSort";
 import LayoutProducts from "../../Layout/layoutProducts";
 
-export default function AllProduct(){
+export default function AllProduct( {language, setLanguage} ){
     return (
-        <LayoutProducts>
-            <ProductSort database={allProducts} title="All Products" />
-        </LayoutProducts>
+        <LayoutProducts language={language} setLanguage={setLanguage}>
+            <ProductSort database={language ? allProductsaAm : allProducts} title="All Products" />
+        </LayoutProducts>   
     )
 }

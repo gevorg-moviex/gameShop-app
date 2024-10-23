@@ -24,9 +24,11 @@ export default {
         "product660x": "660px",
         "product560x": "560px",
         "product460x": "460px",
+        "product390x": "390px",
         "product380x": "380px",
         "product360x": "360px",
         "product340x": "360px",
+        "product3440x": "340px",
         "product335x": "335px"
       },
       boxShadow: {

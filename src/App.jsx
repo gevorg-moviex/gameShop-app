@@ -22,8 +22,8 @@ function App() {
         <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/products/allProducts" element={isLoggedIn ? <AllProduct /> : <Navigate to="/login" />} />
-        <Route path="/contact" element={isLoggedIn ? <Contact /> : <Navigate to="/login" />} />
+        <Route path="/products/allProducts" element={isLoggedIn ? <AllProduct language={language} setLanguage={setLanguage} /> : <Navigate to="/login" />} />
+        <Route path="/contact" element={isLoggedIn ? <Contact language={language} setLanguage={setLanguage} /> : <Navigate to="/login" />} />
         <Route path="/products/accesories" element={isLoggedIn ? <Accesories /> : <Navigate to="/login" />} />
         <Route path="/products/bestSellers" element={isLoggedIn ? <BestSellers /> : <Navigate to="/login" />} />
         <Route path="/products/consoles" element={isLoggedIn ? <Consoles /> : <Navigate to="/login" />} />
