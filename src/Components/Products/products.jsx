@@ -6,7 +6,7 @@ import useBookmarkStore from '../../Store/useBookmarkStore';
 import { Autoplay, Pagination } from 'swiper/modules';
 import "./products.css";
 
-export default function ProductsComponent({ dataProduct, title }) {
+export default function ProductsComponent({ dataProduct, title, language }) {
     const { addBookmark, bookmarks } = useBookmarkStore();
     const [slidesPerView, setSlidesPerView] = useState(4)
 
@@ -42,10 +42,10 @@ export default function ProductsComponent({ dataProduct, title }) {
         <div className='bg-[#060506] pt-8 md:pt-36 pb-16 flex justify-center'>
             <div className='flex flex-col gap-10 w-[80%]'>
                 <div className='flex  product660x:w-auto flex-col gap-7 product970x:justify-between product970x:gap-0 product970x:flex-row items-center'>
-                    <h1 className='text-white text-center text-5xl font-bold'>{title}</h1>
+                    <h1 className='text-white text-center text-4xl font-bold'>{title}</h1>
                     <Link to={"/products/allProducts"}>
                         <button className='bg-white transition-all duration-300 text-[#8858ED] font-bold w-36 py-1.5 rounded-2xl hover:border-2 border-solid border-white hover:bg-[#8858ED] hover:text-white'>
-                            View All
+                            {`${language ? "Դիտել Բոլորը" : "View All"}`}
                         </button>
                     </Link>
                 </div>

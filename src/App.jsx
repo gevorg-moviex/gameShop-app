@@ -14,10 +14,11 @@ import { useState } from 'react';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [language, setLanguage] = useState(false)
 
   return (
       <Routes>
-        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/" element={isLoggedIn ? <Home language={language} setLanguage={setLanguage} /> : <Navigate to="/login" />} />
         <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
 
