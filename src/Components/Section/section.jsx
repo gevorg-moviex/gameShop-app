@@ -1,5 +1,5 @@
-import section1 from '../../assets/section-1.webp'; 
-import onSection from '../../assets/onSection-1.webp'; 
+import section1 from '/public/section-1.webp'; 
+import onSection from '/public/onSection-1.webp'; 
 import { Link } from 'react-router-dom';
 
 export default function Section() {

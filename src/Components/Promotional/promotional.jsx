@@ -1,4 +1,4 @@
-import promotionalImg from "../../assets/Promotional/promotional-1.webp"
+import promotionalImg from "/public/Promotional/promotional-1.webp"
 
 export default function Promotional() {
     return (
