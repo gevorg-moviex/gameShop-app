@@ -12,7 +12,7 @@ export default function Navbar( {language, setLanguage} ) {
     return (
         <nav className="relative flex justify-center items-center">
             <li className={`flex md:hidden`}>
-                <BookmarkFunction />
+                <BookmarkFunction language={language} />
             </li>
             <div className="flex items-center justify-between p-4 cursor-pointer" onClick={toggleMenu}>
                 <div className="md:hidden">

@@ -2,7 +2,7 @@ import useBookmarkStore from "../../Store/useBookmarkStore";
 import useModal from "../useModal/useModal";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-export default function BookmarkFunction() {
+export default function BookmarkFunction( {language} ) {
     const { isModalOpen, setModalOpen } = useModal();
     const { bookmarks, removeBookmark, clearBookmark, updateBookmarkPlus, updateBookmarkMinus } = useBookmarkStore();
 
@@ -17,14 +17,14 @@ export default function BookmarkFunction() {
             <div className="fixed inset-0 bg-gray-600 z-[1000] bg-opacity-50 flex items-center justify-center">
                 <div className={`bg-black p-5 rounded-lg max-h-[70%] ${bookmarks.length === 0 ? "overflow-hidden" : "overflow-y-scroll "}`}>
                     <div className='flex w-full justify-between items-center gap-4 mb-4'>
-                        <h2 className="font-bold text-xl">Bookmarked Items</h2>
+                        <h2 className="font-bold text-xl">{language ? "Պահպանած իրեր" : "Bookmarked Items"}</h2>
                         <i 
                             className="fa-solid fa-xmark font-bold text-xl cursor-pointer hover:text-red-500" 
                             onClick={() => setModalOpen(false)}
                         ></i>
                     </div>
                     {bookmarks.length === 0 ? (
-                        <p>No items bookmarked.</p>
+                        <p>{language ? "Պահպանվածներ չկան" : "No items bookmarked."}</p>
                     ) : (
                         <ul className="flex flex-col gap-4 justify-center">
                             {bookmarks.map(item => (
@@ -38,7 +38,7 @@ export default function BookmarkFunction() {
                                                 className="text-red-700 cursor-pointer" 
                                                 onClick={() => removeBookmark(item.id)}
                                             >
-                                                Delete
+                                                {language ? "Հեռացնել" : "Delete"}
                                             </button>
                                             <div className="flex items-center justify-center gap-2 text-sm">
                                                 <FaMinus onClick={() => updateBookmarkMinus(item.id)} className="cursor-pointer"/>
@@ -55,7 +55,7 @@ export default function BookmarkFunction() {
                         className="mt-4 transition-all duration-300 border-none outline-none bg-[#8858ED] text-white rounded-2xl py-1.5 px-5 hover:bg-white hover:text-[#8858ED]" 
                         onClick={clearBookmark}   
                     >
-                        Clear All
+                        {language ? "Ջնջել Բոլորը" : "Clear All"}
                     </button>
                 </div>
             </div>
