@@ -1,0 +1,15 @@
+.react-flags-select .flag-select {
+    display: flex !important; /* Use !important as a last resort */
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: rgb(255, 0, 0) !important;
+    height: 40px !important;
+}
+
+.react-flags-select .flag-select .flag {
+    margin: 0 5px !important;
+}
+
+.react-flags-select .flag-select:hover {
+    background-color: #f0f0f0 !important;
+}

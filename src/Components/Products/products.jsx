@@ -69,7 +69,7 @@ export default function ProductsComponent({ dataProduct, title, language }) {
                                         <h2 className='text-lg font-bold'>{item.title}</h2>
                                         <p>{item.price}</p>
                                         <button className='w-[70%] transition-all duration-300 border-none outline-none bg-[#8858ED] text-white rounded-2xl py-1.5 hover:bg-white hover:text-[#8858ED]' onClick={() => handleBookmark(item)}>
-                                            Add to Cart {count > 0 ? `(${count})` : ''}
+                                            {language ? "Ավելացնել" : "Add to Cart"} {count > 0 ? `(${count})` : ''}
                                         </button>
                                     </div>
                                 </SwiperSlide>
